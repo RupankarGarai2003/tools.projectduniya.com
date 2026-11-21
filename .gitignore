@@ -93,5 +93,4 @@ coverage/
 # =========================
 
 backend/temp/
-package-lock.json
-package.json
+
