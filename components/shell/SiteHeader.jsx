@@ -24,9 +24,17 @@ export default function SiteHeader() {
     };
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = drawer ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [drawer]);
+
   const close = () => (setMega(false), setDrawer(false));
 
   return (
+    <>
     <header className="ds-header">
       <div className="ds-container ds-header-in">
         <Link href="/" className="ds-logo" onClick={close}>
@@ -89,8 +97,10 @@ export default function SiteHeader() {
         </button>
       </div>
 
+    </header>
+
       {drawer && (
-        <div className="ds-drawer">
+        <div className="ds-drawer" role="dialog" aria-label="Menu">
           {CATEGORIES.map((c) => (
             <Link key={c.slug} href={`/category/${c.slug}`} onClick={close}>
               <span style={{ color: c.color }}>
@@ -110,6 +120,6 @@ export default function SiteHeader() {
           </a>
         </div>
       )}
-    </header>
+    </>
   );
 }

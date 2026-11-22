@@ -2,6 +2,7 @@ import "./globals.css";
 import "./design.css";
 import Header from "@/components/shell/SiteHeader";
 import Footer from "@/components/shell/SiteFooter";
+import { Montserrat, Inter } from "next/font/google";
 import ScrollButton from "@/components/ScrollButton";
 import Script from "next/script";
 import type {
@@ -9,9 +10,23 @@ import type {
   Viewport,
 } from "next";
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://tools.projectduniya.com"),
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-heading",
+});
 
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-body",
+});
+
+export const metadata: Metadata = {
+
+  metadataBase: new URL(
+    "https://tools.projectduniya.com"
+  ),
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
@@ -21,7 +36,8 @@ export const metadata: Metadata = {
   title: {
     default:
       "ToolsCenterHub - Free Online PDF, Image & Utility Tools",
-    template: "%s | ToolsCenterHub",
+    template:
+      "%s | ToolsCenterHub",
   },
 
   description:
@@ -55,34 +71,47 @@ export const metadata: Metadata = {
   ],
 
   creator: "ToolsCenterHub",
+
   publisher: "ToolsCenterHub",
+
   category: "Technology",
 
   robots: {
     index: true,
     follow: true,
+
     googleBot: {
       index: true,
       follow: true,
-      "max-image-preview": "large",
+      "max-image-preview":
+        "large",
       "max-snippet": -1,
-      "max-video-preview": -1,
+      "max-video-preview":
+        -1,
     },
   },
 
   alternates: {
+    // "./" resolves against metadataBase for each route, so every page
+    // canonicalises to itself instead of to the homepage.
     canonical: "./",
   },
 
   openGraph: {
     title:
       "ToolsCenterHub - Free Online PDF, Image & Developer Tools",
+
     description:
       "Free online tools for PDF conversion, image editing, compression, QR code generation, developer utilities, and more.",
+
     url: "./",
+
     siteName: "ToolsCenterHub",
+
     locale: "en_US",
+
     type: "website",
+
     images: [
       {
         url: "/og-image.jpg",
@@ -94,11 +123,15 @@ export const metadata: Metadata = {
   },
 
   twitter: {
-    card: "summary_large_image",
+    card:
+      "summary_large_image",
+
     title:
       "ToolsCenterHub - Free Online PDF, Image & Utility Tools",
+
     description:
       "Free online tools for PDF conversion, image editing, compression, QR code generation, developer utilities, and more.",
+
     images: ["/og-image.jpg"],
   },
 };
@@ -150,21 +183,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Google AdSense */}
+        {/* Google AdSense - literal script tag so it's present in raw HTML for verification */}
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5475195663920811"
           crossOrigin="anonymous"
         ></script>
       </head>
-
-      <body className="bg-gray-50 text-gray-800">
-
+      <body
+        className={`${montserrat.variable} ${inter.variable} bg-gray-50 text-gray-800`}
+      >
         {/* Website Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(websiteSchema),
+            __html:
+              JSON.stringify(
+                websiteSchema
+              ),
           }}
         />
 
@@ -172,7 +208,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema),
+            __html:
+              JSON.stringify(
+                organizationSchema
+              ),
           }}
         />
 
@@ -208,7 +247,6 @@ export default function RootLayout({
             gtag('config', 'G-KTXCDXL76Y');
           `}
         </Script>
-
       </body>
     </html>
   );

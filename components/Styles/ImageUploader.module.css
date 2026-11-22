@@ -82,7 +82,10 @@
 /* Text */
 .text {
     color: #374151;
-    font: small-caps bold 16px/2 cursive;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.8;
 }
 
 .link {
@@ -93,7 +96,10 @@
 
 .subtext {
     color: #6b7280;
-    font: small-caps bold 12px/2 cursive;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.8;
 }
 
 /* Hidden input */
