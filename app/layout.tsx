@@ -244,7 +244,7 @@ export default function RootLayout({
 
             gtag('js', new Date());
 
-            gtag('config', 'G-KTXCDXL76Y');
+            gtag('config', 'GTM-WSMKGBZL');
           `}
         </Script>
       </body>
